@@ -1,33 +1,15 @@
 # yii2swoole
-http://blog.csdn.net/nextvary/article/details/79136058
 1,两个shell脚本,保证 swoole 进程常驻 
 ①:crontab -e
 
 */1 * * * * /home/shell/swoole_autostart.sh
-1
-2
+
 ②:killswoole.sh:killswoole子进程
 
-#!/bin/bash
-for i in `ps -eaf |grep swoole |grep -v sh |grep -v grep | awk '{print $2}'`
-do
-    echo "kill swoole pid: [ $i ]"
-    kill -9 $i
-done
-ulimit -c unlimited
+
 
 ③:swoole_autostart.sh :自动启动
 
-#!/bin/bash
-count=`ps -fe |grep "swoole" | grep -v "grep" | grep "Master" | wc -l`
-if [ $count -lt 1 ];
-then
-    /home/...../killswoole.sh
-    /usr/local/php/bin/php  /home/..../myswoole/server.php
-    echo "start ok!!"
-else
-    echo '已启动'
-fi
 
 
 2,项目部署完毕,在yii2 某一控制器中执行发送邮件等操作
