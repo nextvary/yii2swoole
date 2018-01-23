@@ -1,3 +1,6 @@
+参考资料:
+http://blog.csdn.net/nextvary/article/details/79136058
+
 # yii2swoole
 1,两个shell脚本,保证 swoole 进程常驻 
 ①:crontab -e
